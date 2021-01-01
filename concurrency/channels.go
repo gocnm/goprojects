@@ -9,13 +9,8 @@ func main() {
 	c := make(chan string)
 	go count("sheep", c)
 	
-	for {
-		msg, open := <- c
-		
-		if !open {
-			break
-		}
-		
+	//this syntax will make main go routine keep receiving messages until the channel is closed
+	for msg := range c {
 		fmt.Println(msg)
 	}
 }
