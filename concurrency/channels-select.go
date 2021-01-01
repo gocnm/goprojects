@@ -24,7 +24,12 @@ func main() {
 	}()
 
 	for {
-		fmt.Println(<- c1)
-		fmt.Println(<- c2)
+		//select statement which allows to receive messages from whichever channel is ready to send
+		select {
+		case msg1 := <- c1:
+			fmt.Println(msg1)
+		case msg2 := <- c2:
+			fmt.Println(msg2)
+		}		
 	}
 }
