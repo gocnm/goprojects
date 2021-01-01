@@ -24,10 +24,7 @@ func main() {
 	}()
 
 	for {
-		msg1 := <- c1 
-		fmt.Println(msg1)
-
-		msg2 := <- c2 // this blocks and hence msg1 will not be printed until msg2 is available (after 2 seconds)
-		fmt.Println(msg2)
+		fmt.Println(<- c1)
+		fmt.Println(<- c2)
 	}
 }
