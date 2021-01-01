@@ -1,0 +1,17 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	c := make(chan string, 2) // buffer as 2. It will not block until channel is full
+	c <- "Hello"
+	c <- "World"
+	
+	msg := <- c
+	fmt.Println(msg)
+
+	msg = <- c
+	fmt.Println(msg)
+}
